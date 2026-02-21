@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=600, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>write number of tags you wanted</h1>
+<form id = "tagselection"><label><i>Tags<i></label>
+<input type="checkbox"> edit profile<br>
+<input type="checkbox"> recently deleted items<br>
+<input type="checkbox"> settings<br>
+<input type="checkbox"> history <br>
+<input type="checkbox"> images <br>
+<input type="checkbox"> downloads<br>
+<input type="checkbox"> delete browsing data<br>
+<input type="checkbox"> orders<br>
+<input type="checkbox"> recently seen<br>
+<input type="checkbox"> share <br>
+<input type="checkbox"> forward<br>
+<input type="checkbox"> log out<br>
+<input type="checkbox"> search<br>
+<button type="button" oneclick="showSelected()"><b>show selected</b></button>
+<hr>
+<h2>selected items</h2>
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>selected tags</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody id ="resultTable">
+
+    </tbody>
+</table>
+<script>
+    function showSelected(){
+        let table =
+        document.getElementById("resultTable");
+        table.innerHTML ="";
+        let checkboxes =
+        document.querySelectedAll("input[type=checkbox]:checked");
+        checkboxex.forEach((item)=>{
+            let row = document.createElement("tr");
+            let cell1 = document.createElement("td");
+            cell1.innerText = item.value;
+            let cell2 = document.createElement("td");
+            let btn = document.createElement("button");
+            btn.innerText = "Remove";
+            btn.onclick = function () {
+                item.checked = false;
+                showSelected();
+            
+            };
+            cell2.appendChild(btn);
+            row.appendChild(cell1);
+            row.appendChild(cell2);
+            table.appendChild(row);
+        
+        });
+        
+
+    }
+
+</script>
+<button><a href="formats.html">previous..</button></a>
+</body>
+</html>
